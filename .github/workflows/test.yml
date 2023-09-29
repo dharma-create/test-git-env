@@ -20,5 +20,5 @@ jobs:
     steps:
       - name: check 
         id: terraform_fmt
-        run: echo "${{env.REGION}}""
+        run: echo "${{env.REGION}}"
     
