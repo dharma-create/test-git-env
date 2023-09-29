@@ -1,0 +1,24 @@
+name: Test Git Env with inputs
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_environment:
+        type: choice
+        description: What is the deployment env you wanna choose.
+        options: 
+        - dev
+        - test
+        - Prod 
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{inputs.deployment_environment}}
+    steps:
+      - name: check 
+        id: terraform_fmt
+        run: echo "${{env.REGION}}""
+    
